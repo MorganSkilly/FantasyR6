@@ -1,0 +1,36 @@
+@font-face {
+    font-family: 'ScoutCond';
+    src: url('ScoutCond_Regular.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'ScoutCond_Bold';
+    src: url('ScoutCond_Bold.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'ScoutCond_Bold_Italic';
+    src: url('ScoutCond_BoldItalic.otf') format('opentype');
+}
+
+.scoutcond {
+    font-family: 'ScoutCond', sans-serif;
+    font-weight: bold;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+.scoutcond-bold {
+    font-family: 'ScoutCond_Bold', sans-serif;
+    font-weight: bold;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+.scoutcond-bold-italic {
+    font-family: 'ScoutCond_Bold_Italic', sans-serif;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
+    color: white;
+}
