@@ -20,8 +20,8 @@ if(!$_SESSION['logged_in']){
     <meta name="description" content="Fantasy R6"/>
   
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="hover.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/hover.css">
+    <link rel="stylesheet" href="css/style.css">
     <script src="https://kit.fontawesome.com/66afee0429.js" crossorigin="anonymous"></script>
     
   </head>
@@ -29,7 +29,7 @@ if(!$_SESSION['logged_in']){
   <body class="bg">
   
       
-      <?php include('navigation.php'); ?>
+      <?php include('html_sections/navigation.php'); ?>
 
       <div class="container">
         <div class="mt-5 w-50 mx-auto"> 
@@ -69,17 +69,16 @@ if(!$_SESSION['logged_in']){
                   die('Connection failed: ' . $conn->connect_error);
                 }
 
-                $sql = "SELECT ubisoft_name, twitter_name, twitch_name, r6_player_stats, r6_player_rating FROM users WHERE discord_id = ?";
+                $sql = "SELECT twitter_name, twitch_name FROM users WHERE discord_id = ?";
 
                 $stmt = $conn->prepare($sql);
                 $stmt->bind_param("i", $user_id);
                 $stmt->execute();
 
-                $stmt->bind_result($ubisoft_name, $twitter_name, $twitch_name, $r6_stats, $r6_rating);
+                $stmt->bind_result($twitter_name, $twitch_name);
 
                 if ($stmt->fetch())
                 {
-                  $ubisoft_name = "https://r6.tracker.network/profile/pc/" . $ubisoft_name;
                   $twitter_name = "https://twitter.com/" . $twitter_name;
                   $twitch_name = "https://www.twitch.tv/" . $twitch_name;                  
 
@@ -95,9 +94,6 @@ if(!$_SESSION['logged_in']){
                       
                         <label for='twitter'>Twitter</label>
                         <input type='text' class='form-control form-control-sm' id='twitter' name='twitter' placeholder='Enter Twitter name here (leave blank to remain unchanged)'>
-                                              
-                        <label for='ubisoft'>Ubisoft</label>
-                        <input type='text' class='form-control form-control-sm' id='ubisoft' name='ubisoft' placeholder='Enter Ubisoft name here (leave blank to remain unchanged)'>
                       </div>
                       <button type='submit' class='btn btn-outline-info'>Update</button>
                     </form>
@@ -112,35 +108,7 @@ if(!$_SESSION['logged_in']){
 
                     echo "<img class='img-fluid rounded-circle' src='$avatar_url' width='150vw' height='150vw'>";
 
-                    echo "<br><br><h4><i class='fa-solid fa-star'></i> " . round($r6_rating) . "</h4>";
                     echo "<h2>" . $user_data['username'] . "</h2><br>";
-
-                    if ($ubisoft_name != "")
-                    {
-                      echo '<table class="table table-dark text-left">';
-                      echo '<thead><tr><th scope="col">Stat</th><th scope="col">Value</th></tr></thead><tbody>';
-
-                      foreach (json_decode($r6_stats, true) as $key => $value)
-                      {
-                        if (round($value, 2) == (int) $value)
-                        {
-                          $rounded_value = (int) $value;
-                        }
-                        else
-                        {
-                          $rounded_value = number_format($value, 2);
-                        }
-
-                        echo '<tr>';
-                        echo '<td>' . $key . '</td>';
-                        echo '<td>' . $rounded_value . '</td>';
-                        echo '</tr>';
-                      }
-                      echo '</tbody></table>';
-
-                      echo "<hr>";
-
-                    }
 
                     if ($twitter_name != "")
                     {
@@ -149,10 +117,6 @@ if(!$_SESSION['logged_in']){
                     if ($twitch_name != "")
                     {
                       echo "<a href='$twitch_name' target='_blank'><i class='fa-brands fa-twitch mr-3'></i></a>";
-                    }
-                    if ($ubisoft_name != "")
-                    {
-                      echo "<a href='$ubisoft_name' target='_blank'><i class='fa-solid fa-chart-simple'></i></a>";
                     }
                   }
                   
@@ -177,6 +141,6 @@ if(!$_SESSION['logged_in']){
         </div>        
       </div>
 
-      <?php include('footer.php'); ?>
+      <?php include('html_sections/footer.php'); ?>
   </body>
 </html>

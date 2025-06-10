@@ -1,10 +1,10 @@
 <?php
-if (!isset($_GET['access'])){
+/*if (!isset($_GET['access'])){
   if (!$_GET['access']){
     header("Location: comingsoon.php");
     exit;
   }
-}
+}*/
 ?>
 
 <?php
@@ -44,7 +44,7 @@ if (isset($_SESSION['discord_user_data'])) {
 
   <body class="bg">    
 
-    <?php include('./html_sections/navigation.php'); ?>
+    <?php include('html_sections/navigation.php'); ?>
 
 
     <div class="container">
@@ -61,7 +61,7 @@ if (isset($_SESSION['discord_user_data'])) {
 
       <a href='oauth.php' class='btn btn-primary hvr-sink my-2 my-sm-0' role='button' target='_self'><i class='fa-brands fa-discord'></i>&nbsp;Log in with Discord</a>
 
-      <?php include('./html_sections/footer.php'); ?>
+      <?php include('html_sections/footer.php'); ?>
     </div>
   </body>
 </html>

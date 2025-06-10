@@ -17,7 +17,7 @@ if ($conn->connect_error) {
     die('Connection failed: ' . $conn->connect_error);
 }
 
-$sql = "SELECT staff FROM users WHERE discord_id = ?";
+$sql = "SELECT admin FROM users WHERE discord_id = ?";
 
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $_SESSION['discord_user_data']['id']);
@@ -43,8 +43,8 @@ $conn->close();
     <meta name="description" content="Fantasy R6"/>
   
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="hover.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/hover.css">
+    <link rel="stylesheet" href="css/style.css">
     <script src="https://kit.fontawesome.com/66afee0429.js" crossorigin="anonymous"></script>
     
   </head>
@@ -52,7 +52,7 @@ $conn->close();
   <body class="bg">
   
       
-      <?php include('navigation.php'); ?>
+      <?php include('html_sections/navigation.php'); ?>
 
       <div class="container">
         <div class="mt-5 w-50 mx-auto"> 
@@ -75,7 +75,7 @@ $conn->close();
                     die('Connection failed: ' . $mysqli->connect_error);
                 }
 
-                $columns = array('id', 'name', 'ubisoft_name', 'r6_player_rating', 'discord_id', 'account_created', 'last_login'); // Replace with the actual column names you want
+                $columns = array('id', 'name', 'discord_id', 'account_created', 'last_login'); // Replace with the actual column names you want
 
                 // Construct the SQL query to select specific columns from the table
                 $sql = 'SELECT ' . implode(', ', $columns) . ' FROM ' . $table;
@@ -119,6 +119,6 @@ $conn->close();
         </div>        
       </div>
 
-      <?php include('footer.php'); ?>
+      <?php include('html_sections/footer.php'); ?>
   </body>
 </html>

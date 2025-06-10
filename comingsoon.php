@@ -38,7 +38,7 @@
         <br>
         <br>
         <br>
-      <?php include('./html_sections/footer.php'); ?>
+      <?php include('html_sections/footer.php'); ?>
     </div>
   </body>
 </html>

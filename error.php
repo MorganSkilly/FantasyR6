@@ -20,7 +20,7 @@
   <body class="bg">
 
           
-      <?php include('navigation.php'); ?>
+      <?php include('html_sections/navigation.php'); ?>
 
       <div class="container">
         <div class="mt-4"> 
@@ -51,6 +51,6 @@
         </div>        
       </div>
 
-      <?php include('footer.php'); ?>
+      <?php include('html_sections/footer.php'); ?>
   </body>
 </html>

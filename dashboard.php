@@ -58,8 +58,8 @@ function returnGuilds()
     <meta name="description" content="Fantasy R6"/>
   
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="hover.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/hover.css">
+    <link rel="stylesheet" href="css/style.css">
     <script src="https://kit.fontawesome.com/66afee0429.js" crossorigin="anonymous"></script>
     
   </head>
@@ -67,7 +67,7 @@ function returnGuilds()
   <body class="bg">
   
       
-      <?php include('navigation.php'); ?>
+      <?php include('html_sections/navigation.php'); ?>
 
       <div class="container">
         <div class="mt-4"> 
@@ -76,6 +76,6 @@ function returnGuilds()
         </div>        
       </div>
 
-      <?php include('footer.php'); ?>
+      <?php include('html_sections/footer.php'); ?>
   </body>
 </html>

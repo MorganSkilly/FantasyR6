@@ -36,7 +36,6 @@ if ($user_exists)
 {
     echo $_POST['twitch'];
     echo $_POST['twitter'];
-    echo $_POST['ubisoft'];
 
     if(isset($_POST['twitch']) && !empty($_POST['twitch']))
     {
@@ -82,23 +81,6 @@ if ($user_exists)
             echo "Profile updated successfully.";
         } else {
             echo "Error updating twitter name: " . $stmtupdate2->error;
-        }
-    }
-    if(isset($_POST['ubisoft']) && !empty($_POST['ubisoft']))
-    {
-        $sql3 = "UPDATE users SET ubisoft_name = ?, r6_player_stats = ?, r6_player_rating = ? WHERE discord_id = ?";
-
-        $stmtupdate3 = $conn->prepare($sql3);
-
-        $r6_stats = get_player_stats($_SESSION['r6_stats_endpoint'] . $_POST['ubisoft']);
-        $r6_rating = get_player_rating($r6_stats);
-        
-        $stmtupdate3->bind_param("ssdi", $_POST['ubisoft'], json_encode($r6_stats), $r6_rating, $discord_id);
-
-        if ($stmtupdate3->execute()) {
-            echo "Profile updated successfully.";
-        } else {
-            echo "Error updating ubisoft name: " . $stmtupdate3->error;
         }
     }
 
